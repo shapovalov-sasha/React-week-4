@@ -11,10 +11,10 @@ export default function AddForm(props) {
     details: "",
   });
 
-  const handleChange = (event, field) => {
+  const handleChange = (event) => {
     setFormState((prevState) => ({
       ...prevState,
-      [field]: event.target.value,
+      [event.target.name]: event.target.value,
     }));
   };
 
@@ -44,7 +44,8 @@ export default function AddForm(props) {
         id="outlined-basic"
         label="Name"
         variant="outlined"
-        onChange={(e) => handleChange(e, "title")}
+        name="title"
+        onChange={handleChange}
       />
       <TextField
         value={formState.count}
@@ -52,7 +53,8 @@ export default function AddForm(props) {
         label="Count"
         variant="outlined"
         type="number"
-        onChange={(e) => handleChange(e, "count")}
+        name="count"
+        onChange={handleChange}
       />
       <TextField
         value={formState.details}
@@ -61,7 +63,8 @@ export default function AddForm(props) {
         multiline
         rows={4}
         variant="outlined"
-        onChange={(e) => handleChange(e, "details")}
+        name="details"
+        onChange={handleChange}
       />
 
       <Button type="submit" variant="contained" startIcon={<Add />}>
